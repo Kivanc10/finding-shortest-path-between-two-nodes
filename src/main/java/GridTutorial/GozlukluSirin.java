@@ -74,9 +74,24 @@ public class GozlukluSirin extends Oyuncu {
                                 d.setYLoc(d.charJLabel.getBounds().x / 80);
 
                                 System.out.println("------------ dusman final x , final y --- " + d.getFinalX() + "," + d.getFinalY());
-                                d.enKisaYol(player);    // minimum path
-                                System.out.println("dispath size : " + d.distPaths.size());
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
+                                try {
+                                    d.enKisaYol(player);    // minimum path
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
+                                        if (player.getSkor() - 5 > 0) {
+                                            player.setSkor(player.getSkor() - 5);
+                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            player.PuaniGoster(player);
+                                            d.command = false;
+                                            d.enKisaYol(player);
+                                            d.command = true;
+                                        } else {
+                                            System.out.println("oyun bitti...");
+                                            f.setVisible(false);
+                                        }
+                                    }
+                                } catch (Exception ex) {
                                     player.skorLabel.setText("yakalandin");
                                     if (d.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -92,7 +107,24 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
+                                    }
+
+                                }
+                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
+                                    System.out.println("Kazand?n?z");
+                                    f.setVisible(false);
+                                }
+
+                            } else if (enemies.size() == 2) {
+                                d = enemies.get(0);
+                                d1 = enemies.get(1);
+                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                try {
+                                    d.enKisaYol(player);
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
                                         if (player.getSkor() - 5 > 0) {
                                             player.setSkor(player.getSkor() - 5);
                                             d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
@@ -107,22 +139,8 @@ public class GozlukluSirin extends Oyuncu {
                                             f.setVisible(false);
                                         }
                                     }
-                                }
-                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
-                                    f.setVisible(false);
-                                }
-                            } else if (enemies.size() == 2) {
-                                d = enemies.get(0);
-                                d1 = enemies.get(1);
-                                d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                d.enKisaYol(player);
-                                d1.enKisaYol(player);
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
-                                    player.skorLabel.setText("yakaland?n");
+                                } catch (Exception ex1) {
+                                    player.skorLabel.setText("yakalandin");
                                     if (d.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
                                             player.setSkor(player.getSkor() - 15);
@@ -137,23 +155,30 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
+                                    }
+                                }
+                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
+                                    System.out.println("Kazand?n?z");
+                                    f.setVisible(false);
+                                }
+                                try {
+                                    d1.enKisaYol(player);
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
                                         if (player.getSkor() - 5 > 0) {
                                             player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
                                             player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                            d1.command = false;
+                                            d1.enKisaYol(player);
+                                            d1.command = true;
                                         } else {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
                                     }
-                                }
-                                if (d1.getXLoc() == player.getXLoc() && d1.getYLoc() == player.getYLoc()) {
+                                } catch (Exception ex2) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d1.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -169,24 +194,10 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
                                     }
                                 }
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
+                                    System.out.println("Kazand?n?z");
                                     f.setVisible(false);
                                 }
                             }
@@ -207,8 +218,24 @@ public class GozlukluSirin extends Oyuncu {
                                 d.setXLoc(d.charJLabel.getBounds().y / 80);
                                 d.setYLoc(d.charJLabel.getBounds().x / 80);
                                 //System.out.println("gargamel loc : (" + d.getXLoc() + "," + d.getYLoc() + " )");
-                                d.enKisaYol(player);
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
+                                try {
+                                    d.enKisaYol(player);
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
+                                        if (player.getSkor() - 5 > 0) {
+                                            player.setSkor(player.getSkor() - 5);
+                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            player.PuaniGoster(player);
+                                            d.command = false;
+                                            d.enKisaYol(player);
+                                            d.command = true;
+                                        } else {
+                                            System.out.println("oyun bitti...");
+                                            f.setVisible(false);
+                                        }
+                                    }
+                                } catch (Exception ex) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -224,24 +251,11 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
                                     }
                                 }
+
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
+                                    System.out.println("Kazand?n?z");
                                     f.setVisible(false);
                                 }
                             } else if (enemies.size() == 2) {
@@ -251,9 +265,24 @@ public class GozlukluSirin extends Oyuncu {
                                 d.setYLoc(d.charJLabel.getBounds().x / 80);
                                 d1.setXLoc(d1.charJLabel.getBounds().y / 80);
                                 d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                d.enKisaYol(player);
-                                d1.enKisaYol(player);
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
+                                try {
+                                    d.enKisaYol(player);
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
+                                        if (player.getSkor() - 5 > 0) {
+                                            player.setSkor(player.getSkor() - 5);
+                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            player.PuaniGoster(player);
+                                            d.command = false;
+                                            d.enKisaYol(player);
+                                            d.command = true;
+                                        } else {
+                                            System.out.println("oyun bitti...");
+                                            f.setVisible(false);
+                                        }
+                                    }
+                                } catch (Exception ex1) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -269,23 +298,26 @@ public class GozlukluSirin extends Oyuncu {
                                             player.PuaniGoster(player);
                                             f.setVisible(false);
                                         }
-                                    } else {
+                                    }
+                                }
+                                try {
+                                    d1.enKisaYol(player);
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
                                         if (player.getSkor() - 5 > 0) {
                                             player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
                                             player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                            d1.command = false;
+                                            d1.enKisaYol(player);
+                                            d1.command = true;
                                         } else {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
                                     }
-                                }
-                                if (d1.getXLoc() == player.getXLoc() && d1.getYLoc() == player.getYLoc()) {
+                                } catch (Exception ex2) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d1.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -301,24 +333,11 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
                                     }
                                 }
+
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
+                                    System.out.println("Kazand?n?z");
                                     f.setVisible(false);
                                 }
                             }
@@ -338,8 +357,24 @@ public class GozlukluSirin extends Oyuncu {
                                 d.setYLoc(d.charJLabel.getBounds().x / 80);
 
                                 // System.out.println("gargamel loc : (" + d.getXLoc() + "," + d.getYLoc() + " )");
-                                d.enKisaYol(player);
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
+                                try {
+                                    d.enKisaYol(player);
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
+                                        if (player.getSkor() - 5 > 0) {
+                                            player.setSkor(player.getSkor() - 5);
+                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            player.PuaniGoster(player);
+                                            d.command = false;
+                                            d.enKisaYol(player);
+                                            d.command = true;
+                                        } else {
+                                            System.out.println("oyun bitti...");
+                                            f.setVisible(false);
+                                        }
+                                    }
+                                } catch (Exception ex) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -355,24 +390,11 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
                                     }
                                 }
+
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
+                                    System.out.println("Kazand?n?z");
                                     f.setVisible(false);
                                 }
 
@@ -383,9 +405,24 @@ public class GozlukluSirin extends Oyuncu {
                                 d.setYLoc(d.charJLabel.getBounds().x / 80);
                                 d1.setXLoc(d1.charJLabel.getBounds().y / 80);
                                 d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                d.enKisaYol(player);
-                                d1.enKisaYol(player);
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
+                                try {
+                                    d.enKisaYol(player);
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
+                                        if (player.getSkor() - 5 > 0) {
+                                            player.setSkor(player.getSkor() - 5);
+                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            player.PuaniGoster(player);
+                                            d.command = false;
+                                            d.enKisaYol(player);
+                                            d.command = true;
+                                        } else {
+                                            System.out.println("oyun bitti...");
+                                            f.setVisible(false);
+                                        }
+                                    }
+                                } catch (Exception ex1) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -401,23 +438,26 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
+                                    }
+                                }
+                                try {
+                                    d1.enKisaYol(player);
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
                                         if (player.getSkor() - 5 > 0) {
                                             player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
                                             player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                            d1.command = false;
+                                            d1.enKisaYol(player);
+                                            d1.command = true;
                                         } else {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
                                     }
-                                }
-                                if (d1.getXLoc() == player.getXLoc() && d1.getYLoc() == player.getYLoc()) {
+                                } catch (Exception ex2) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d1.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -433,24 +473,11 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
                                     }
                                 }
+
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
+                                    System.out.println("Kazand?n?z");
                                     f.setVisible(false);
                                 }
                             }
@@ -469,25 +496,9 @@ public class GozlukluSirin extends Oyuncu {
                                 d.setXLoc(d.charJLabel.getBounds().y / 80);
                                 d.setYLoc(d.charJLabel.getBounds().x / 80);
                                 System.out.println("tembel s. koord : " + player.getXLoc() + "," + player.getYLoc());
-                                d.enKisaYol(player);     // minimum path
-
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    } else {
+                                try {
+                                    d.enKisaYol(player);     // minimum path
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
                                         if (player.getSkor() - 5 > 0) {
                                             player.setSkor(player.getSkor() - 5);
                                             d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
@@ -502,21 +513,7 @@ public class GozlukluSirin extends Oyuncu {
                                             f.setVisible(false);
                                         }
                                     }
-                                }
-                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
-                                    f.setVisible(false);
-                                }
-                            } else if (enemies.size() == 2) {
-                                d = enemies.get(0);
-                                d1 = enemies.get(1);
-                                d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                d.enKisaYol(player);
-                                d1.enKisaYol(player);
-                                if (d.getXLoc() == player.getXLoc() && d.getYLoc() == player.getYLoc()) {
+                                } catch (Exception ex) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -532,7 +529,23 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
+                                    }
+                                }
+
+                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
+                                    System.out.println("Kazand?n?z");
+                                    f.setVisible(false);
+                                }
+                            } else if (enemies.size() == 2) {
+                                d = enemies.get(0);
+                                d1 = enemies.get(1);
+                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                try {
+                                    d.enKisaYol(player);
+                                    if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
                                         if (player.getSkor() - 5 > 0) {
                                             player.setSkor(player.getSkor() - 5);
                                             d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
@@ -547,8 +560,42 @@ public class GozlukluSirin extends Oyuncu {
                                             f.setVisible(false);
                                         }
                                     }
+                                } catch (Exception ex1) {
+                                    player.skorLabel.setText("yakaland?n");
+                                    if (d.name().startsWith("G")) {
+                                        if (player.getSkor() - 15 > 0) {
+                                            player.setSkor(player.getSkor() - 15);
+                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                            player.PuaniGoster(player);
+                                            d.command = false;
+                                            d.enKisaYol(player);
+                                            d.command = true;
+                                        } else {
+                                            System.out.println("oyun bitti...");
+                                            f.setVisible(false);
+                                        }
+                                    }
                                 }
-                                if (d1.getXLoc() == player.getXLoc() && d1.getYLoc() == player.getYLoc()) {
+                                try {
+                                    d1.enKisaYol(player);
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
+                                        if (player.getSkor() - 5 > 0) {
+                                            player.setSkor(player.getSkor() - 5);
+                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                            player.PuaniGoster(player);
+                                            d1.command = false;
+                                            d1.enKisaYol(player);
+                                            d1.command = true;
+                                        } else {
+                                            System.out.println("oyun bitti...");
+                                            f.setVisible(false);
+                                        }
+                                    }
+                                } catch (Exception ex2) {
                                     player.skorLabel.setText("yakaland?n");
                                     if (d1.name().startsWith("G")) {
                                         if (player.getSkor() - 15 > 0) {
@@ -564,24 +611,11 @@ public class GozlukluSirin extends Oyuncu {
                                             System.out.println("oyun bitti...");
                                             f.setVisible(false);
                                         }
-                                    } else {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
                                     }
                                 }
+
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazandýnýz");
+                                    System.out.println("Kazand?n?z");
                                     f.setVisible(false);
                                 }
                             }

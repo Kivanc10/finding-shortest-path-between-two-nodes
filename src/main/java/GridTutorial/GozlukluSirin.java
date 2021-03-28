@@ -77,37 +77,40 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);    // minimum path
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
+
                                     }
                                 } catch (Exception ex) {
-                                    player.skorLabel.setText("yakalandin");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
 
                                 }
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
@@ -125,76 +128,82 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex1) {
-                                    player.skorLabel.setText("yakalandin");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
+
                                 }
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
-                                    System.out.println("Kazand?n?z");
+                                    System.out.println("Kazandiniz");
                                     f.setVisible(false);
                                 }
                                 try {
                                     d1.enKisaYol(player);
-                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d1) == 0) {
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d1.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex2) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d1.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
+
                                 }
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
                                     System.out.println("Kazand?n?z");
@@ -221,37 +230,41 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
+
                                     }
                                 } catch (Exception ex) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
+
                                 }
 
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
@@ -268,74 +281,83 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex1) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            player.PuaniGoster(player);
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
+
+                                }
+                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
+                                    System.out.println("Kazandiniz");
+                                    f.setVisible(false);
                                 }
                                 try {
                                     d1.enKisaYol(player);
-                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d1) == 0) {
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d1.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex2) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d1.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
-                                }
+                                    player.skorLabel.setText("hata");
 
+                                }
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
                                     System.out.println("Kazand?n?z");
                                     f.setVisible(false);
@@ -360,37 +382,40 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
+
                                 }
 
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
@@ -408,74 +433,83 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex1) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
+
+                                }
+                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
+                                    System.out.println("Kazandiniz");
+                                    f.setVisible(false);
                                 }
                                 try {
                                     d1.enKisaYol(player);
-                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d1) == 0) {
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d1.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex2) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d1.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
-                                }
+                                    player.skorLabel.setText("hata");
 
+                                }
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
                                     System.out.println("Kazand?n?z");
                                     f.setVisible(false);
@@ -499,37 +533,40 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);     // minimum path
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
+
                                     }
                                 } catch (Exception ex) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
                                 }
 
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
@@ -546,74 +583,83 @@ public class GozlukluSirin extends Oyuncu {
                                 try {
                                     d.enKisaYol(player);
                                     if (d.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);;
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
+                                                d.setXLoc(d.charJLabel.getBounds().y / 80);
+                                                d.setYLoc(d.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d.command = false;
+                                                d.enKisaYol(player);
+                                                d.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex1) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d.charJLabel.setBounds(d.getFinalY() * 80, d.getFinalX() * 80, 80, 80);
-                                            d.setXLoc(d.charJLabel.getBounds().y / 80);
-                                            d.setYLoc(d.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d.command = false;
-                                            d.enKisaYol(player);
-                                            d.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
+                                    player.skorLabel.setText("hata");
+
+                                }
+                                if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
+                                    System.out.println("Kazandiniz");
+                                    f.setVisible(false);
                                 }
                                 try {
                                     d1.enKisaYol(player);
-                                    if (d1.spGrid.minimumDistance(myGrid, player, d) == 0) {
-                                        if (player.getSkor() - 5 > 0) {
-                                            player.setSkor(player.getSkor() - 5);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
+                                    if (d1.spGrid.minimumDistance(myGrid, player, d1) == 0) {
+                                        player.skorLabel.setText("yakalandin");
+                                        if (d1.name().startsWith("G")) {
+                                            if (player.getSkor() - 15 > 0) {
+                                                player.setSkor(player.getSkor() - 15);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
+                                            if (player.getSkor() - 5 > 0) {
+                                                player.setSkor(player.getSkor() - 5);
+                                                d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
+                                                d1.setXLoc(d1.charJLabel.getBounds().y / 80);
+                                                d1.setYLoc(d1.charJLabel.getBounds().x / 80);
+                                                player.PuaniGoster(player);
+                                                d1.command = false;
+                                                d1.enKisaYol(player);
+                                                d1.command = true;
+                                            } else {
+                                                System.out.println("oyun bitti...");
+                                                f.setVisible(false);
+                                            }
                                         }
                                     }
                                 } catch (Exception ex2) {
-                                    player.skorLabel.setText("yakaland?n");
-                                    if (d1.name().startsWith("G")) {
-                                        if (player.getSkor() - 15 > 0) {
-                                            player.setSkor(player.getSkor() - 15);
-                                            d1.charJLabel.setBounds(d1.getFinalY() * 80, d1.getFinalX() * 80, 80, 80);
-                                            d1.setXLoc(d1.charJLabel.getBounds().y / 80);
-                                            d1.setYLoc(d1.charJLabel.getBounds().x / 80);
-                                            player.PuaniGoster(player);
-                                            d1.command = false;
-                                            d1.enKisaYol(player);
-                                            d1.command = true;
-                                        } else {
-                                            System.out.println("oyun bitti...");
-                                            f.setVisible(false);
-                                        }
-                                    }
-                                }
+                                    player.skorLabel.setText("hata");
 
+                                }
                                 if (player.getXLoc() * 80 == (player.sirine.getBounds().y) && (player.getYLoc() * 80) == (player.sirine.getBounds().x - 80)) {
                                     System.out.println("Kazand?n?z");
                                     f.setVisible(false);
